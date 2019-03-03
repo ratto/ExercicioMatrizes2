@@ -27,7 +27,7 @@ namespace ExercicioMatrizes2 {
             int[,] mat = new int[l, c];
 
             for (int i = 0; i < l; i++) {
-                Console.WriteLine("Insert the {0} values for line {1}: ", c, i);
+                Console.WriteLine("Insert the {0} values for line {1}: ", c, i + 1);
                 String[] val = Console.ReadLine().Split(' ');
                 for (int j = 0; j < c; j++) {
                     mat[i, j] = int.Parse(val[j]);
@@ -37,6 +37,7 @@ namespace ExercicioMatrizes2 {
 
             // With the matrix done, we can start playing with it
             int request = 0;
+            Console.Write("Wich number do I have to look for? ");
             request = int.Parse(Console.ReadLine());
 
             for (int i = 0; i < l; i++) {
@@ -44,6 +45,19 @@ namespace ExercicioMatrizes2 {
                     // We need to find our requested number first
                     if (request == mat[i, j]) {
                         Console.WriteLine("Position ({0},{1})", i, j);
+                        // Now we will find it's neighbors
+                        if (j - 1 >= 0) {
+                            Console.WriteLine("Left: " + mat[i, (j - 1)]);
+                        }
+                        if (i - 1 >= 0) {
+                            Console.WriteLine("Up: " + mat[(i - 1), j]);
+                        }
+                        if (j + 1 < c) {
+                            Console.WriteLine("Right: " + mat[i, (j + 1)]);
+                        }
+                        if (i + 1 < l) {
+                            Console.WriteLine("Down: " + mat[(i + 1), j]);
+                        }
                     }
                 }
             }
